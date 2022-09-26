@@ -3,25 +3,37 @@
     >
 
         <v-row>
-            <v-col>
-                <div class="d-flex align-baseline">
-                    <span 
-                        class="text-h5"
-                        :class="{ 'info--text': isRegistrationForm }"
-                    >
-                        Регистрация
-                    </span>
-                    <v-switch
-                        v-model="isRegistrationForm"
-                    ></v-switch>
-
-                    <span 
-                        class="text-h5"
-                        :class="{ 'info--text': !isRegistrationForm }"
-                    >
-                        Вход
-                    </span>
-                </div>
+            <v-col
+                cols="12"
+            >
+                <v-card
+                    hover
+                    :rounded="$vuetify.breakpoint.xsOnly ? 'md' : 'lg'"
+                    
+                >
+                    <div class="container-title">
+                        <v-card-title
+                            v-show="isRegistrationForm" 
+                            class="w-full info--text position-absolute-important"
+                            @click="isRegistrationForm = !isRegistrationForm"
+                        >
+                            Регистрация 
+                        </v-card-title>
+                        <v-slide-y-transition appear>
+                            <v-card-title
+                                v-show="!isRegistrationForm" 
+                                class="w-full info--text position-absolute-important"
+                                @click="isRegistrationForm = !isRegistrationForm"
+                            >
+                                Вход 
+                            </v-card-title>
+                        </v-slide-y-transition>
+                    </div>
+                </v-card>
+            </v-col>
+            <v-col
+                cols="12"
+            >
                 <v-form
                     refs="userFormLogin"
                     v-model="userFormLoginValid"
@@ -35,11 +47,10 @@
                     >
                         <v-col
                             cols="12"
-                            sm="6"
+                            sm="8"
                         >
                             <v-card>
-                                <v-card-title class="justify-center">Вход</v-card-title>
-                                <v-divider></v-divider>
+                                <v-card-title class="font-weight-light">Вход</v-card-title>
                                 <v-card-actions
                                     class="flex-column"
                                 >
@@ -51,6 +62,7 @@
                                         type="text"
                                         :rules="[isFieldRequired]"
                                         name="userLogin"
+                                        
                                     ></v-text-field>
                                     <v-text-field
                                         solo
@@ -76,22 +88,23 @@
                                         </template>
                                     </v-text-field>
                                 </v-card-actions>
-                                <v-divider/>
-                                <div class="w-full d-flex justify-end pa-1">
+                                <div 
+                                    class="w-full d-flex justify-end justify-sm-center px-8 py-1 py-sm-2"
+                                >
                                     <v-btn
+                                        v-show="!userFormLoginValid"
                                         :small="$vuetify.breakpoint.xsOnly"
                                         color="info"
                                         @click="resetValidateLoginForm"
-                                        v-show="!userFormLoginValid"
                                     >
                                         Проверить
                                     </v-btn>
                                     <v-fade-transition>
                                         <v-btn
-                                            :small="$vuetify.breakpoint.xsOnly"
-                                            type="submit"
-                                            color="success"
                                             v-show="userFormLoginValid"
+                                            :small="$vuetify.breakpoint.xsOnly"
+                                            color="success"
+                                            type="submit"
                                         >
                                             Отправить
                                         </v-btn>
@@ -341,5 +354,9 @@
         align-items: center;
         display: flex;
         height: 100%;
+        &-title {
+            width: 100%;
+            height: 60px;
+        }
     }
 </style>

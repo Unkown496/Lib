@@ -4,8 +4,8 @@
             <v-col
                 cols="12"
             >
-                <p class="text-h4">Добавленные книги</p>
-                <v-card>
+                <p class="mb-2 mb-sm-4 text-h5 text-sm-h4">Добавленные книги</p>
+                <v-card  :rounded="$vuetify.breakpoint.xsOnly ? 'md' : 'lg' ">
                     <v-container>
                         <v-row
                             no-gutters 

@@ -8,7 +8,6 @@ const Lib = () => import('@/views/Lib.vue');
 const Login = () => import('@/views/Login.vue');
 const User = () => import('@/views/User.vue');
 const Cart = () => import('@/views/Market.vue');
-const NotFound = () => import('@/views/NotFound.vue');
 const Books = () => import('@/views/Books.vue');
 
 
@@ -22,9 +21,8 @@ const routes = [
     component: Books,
   },
   {
-    path: '/notFound',
-    name: NotFound,
-    component: NotFound
+    path: '*',
+    redirect: '/'
   },
   {
     path: '/',

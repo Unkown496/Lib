@@ -156,7 +156,11 @@
           </v-list>
           <template v-slot:append>
               <v-card elevation="10">
-                <v-card-title>Powered by Nastya</v-card-title>
+                <v-card-title class="justify-center flex-grow-1">
+                  Powered by 
+                  <a class="pl-1 text-decoration-none" href="https://github.com/Unkown496">Unkown496</a>
+                </v-card-title>
+                <p class="mb-0 text-caption font-weight-thin text-end">This demonstaration version</p>
               </v-card>
           </template>
         </v-navigation-drawer>

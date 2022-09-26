@@ -8,8 +8,7 @@
           <p class="text-h4 font-weigth-bold mb-1">Новые книги</p>
           <div class="carousel-books pb-4">
             <v-col
-              cols="8"
-              sm="6"
+              cols="6"
               md="5"
               lg="4"
               class="mt-3" 
@@ -164,7 +163,7 @@
                             class="d-flex flex-column flex-sm-row align-sm-baseline"
                           >
                             <p 
-                              class="d-sm-inline-block text-caption text-sm-subtitle-1 font-weight-bold mb-0 pa-sm-4 order-2 order-sm-1"
+                              class="d-sm-inline-block text-end text-sm-start text-caption text-sm-subtitle-1 font-weight-bold mb-0 pa-sm-4 order-2 order-sm-1"
                               v-text="item.title"
                             />
                             <v-card-subtitle 
@@ -210,6 +209,7 @@
       <v-col cols="12">
         <v-card
           hover
+          :rounded="$vuetify.breakpoint.xsOnly ? 'md' : 'lg' "
           v-click-outside="filterOptionsClickOutside"
         >
           <div class="d-flex w-full">
@@ -249,6 +249,8 @@
               v-show="isOpenFilterOptions"
             >
               <v-list
+                :dense="$vuetify.breakpoint.xsOnly"
+                :rounded="$vuetify.breakpoint.xsOnly ? 'md' : 'lg' "
                 class="flex-grow-1 pt-0"
               >
                 <v-list-item-group
@@ -305,8 +307,9 @@
                       </v-list-item-action>
                     </v-list-item>
                   </template>
+                  <v-divider />
                 </v-list-item-group>
-                <!-- <v-list-group
+                <v-list-group
                   prepend-icon="mdi-account-edit"
                 >
                   <template v-slot:activator>
@@ -314,6 +317,7 @@
                   </template>
                   <v-list-item-group
                     color="info"
+                    v-model="chooseAuthor"
                   >
                     <template v-for="(authorName, i) in allAutors">
                       <v-divider :key="i" />
@@ -329,7 +333,7 @@
                       </v-list-item> 
                     </template>
                   </v-list-item-group>
-                </v-list-group> -->
+                </v-list-group>
               </v-list>
             </v-card-actions>
           </v-expand-transition>
@@ -731,6 +735,7 @@
         },
       }
     ],
+    chooseAuthor: null,
     genreUserSelect: [],
   }),
   methods: {
@@ -924,10 +929,7 @@
         }
         return badgeContent;
       },
-
-      likeBooksHaveBooks() {
-        return;
-      },
+      filterForAuthors() {},
       resizerForImage() {
         let sizeAfterResize = null;
 
