@@ -1,0 +1,137 @@
+// import global var file
+@import "./varibalse.scss";
+
+
+.v-btn {
+    &--tips {
+        &:hover {
+            // get grey color in vuetify colors
+            $greyToHover: map-get($map: $grey, $key: 'lighten-1');
+            color: $greyToHover !important;
+            transform: scale(1.5);
+        }
+    }
+}   
+
+.bg {
+    &-none {
+        background: none;
+    }
+    &-none-important {
+        background: none !important;
+    }
+}
+
+.position {
+    $value-position: "absolute", "fixed", "sticky", "relative", "static", "inherit", "intial", "revert", "unset";
+    @each $val in $value-position {
+        &-#{$val} {
+            position: #{$val};
+        }
+        
+        &-#{$val}-important {
+            position: #{$val} !important;
+        }
+    }
+}
+
+.trasnform {
+    &-scale {
+        &-ligth {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.align {
+    $align-properties: "center", "flex-start", "flex-end";
+    &-self {
+        @each $var in $align-properties {
+            &-#{$var} {
+                align-self: #{$var};
+            }
+        }
+    }
+}
+
+.transition {
+    &-all {
+        @each $time, $second in $animation-speed {
+            &-#{$time}-important {
+                transition: all #{$second} !important;
+            }
+        }
+        @each $time, $second in $animation-speed {
+            &-#{$time} {
+                transition: all #{$second};
+            }
+        }
+    }
+}
+.transitions {
+    transition: 2s all;
+}
+
+.text {
+    &-break-spaces {
+        white-space: break-spaces !important;
+    }
+    &-non-space {
+        white-space: nowrap !important;
+    }
+    &-hiddened {
+        @extend .text-non-space;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.m {
+    &w {
+        &-null {
+            max-width: none;
+        }
+    }
+}
+
+.w {
+    &-full {
+        width: 100%;
+    }
+
+    &-auto {
+        width: auto;
+    }
+
+    &-fill-avalibale {
+        width: -webkit-fill-available;
+    }
+}
+
+.h {
+    &-full {
+        height: 100%;
+    }
+    $content-values: "max", "min", "fit";
+    @each $val in $content-values {
+        &-#{$val}-content {
+            height: #{$val}-content;
+        }
+    }
+}
+.d {
+    &-contents {
+        display: contents;
+    }
+}
+.cursor {
+    $cursor-value: "pointer", "wait", "none";
+    @each $val in $cursor-value {
+        &-#{$val} {
+            cursor: #{$val};
+        }
+        &-#{$val}-important {
+            cursor: #{$val} !important;
+        }
+    }
+}
